@@ -57,7 +57,7 @@ v
 ```bash
 gem install --user-install fluentd
 fluentd --setup ./fluent
-### **2️⃣ Configure Fluentd
+### **2️⃣ Configure Fluentd**
 
 Create a file named fluent.conf:
 <source>
