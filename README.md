@@ -25,8 +25,17 @@ To design and deploy a **DevOps-based solution** that automates the **collection
 
 ## 🧩 System Architecture
 
----
-
++-----------------+ +--------------------+ +------------------+
+| Data Sources | ---> | Fluentd | ---> | InfluxDB |
+| (System Logs, | | (Collector + | | (Time-series DB)|
+| App Logs) | | Aggregator) | | |
++-----------------+ +--------------------+ +------------------+
+|
+v
++------------------+
+| Grafana |
+| (Visualization) |
++------------------+
 ## 🔑 Key Features
 
 ✅ Real-time **log collection** from system and application sources  
@@ -61,3 +70,70 @@ fluentd --setup ./fluent
   port 8086
   database syslog
 </match>
+
+2️⃣ Configure Fluentd
+
+Create a file named fluent.conf:
+
+<source>
+  @type exec
+  command /path/to/resource_monitor.sh
+  tag system.metrics
+  <parse>
+    @type json
+  </parse>
+  interval 5s
+</source>
+
+<match **>
+  @type influxdb
+  host localhost
+  port 8086
+  database syslog
+</match>
+
+3️⃣ Start InfluxDB and Grafana
+
+Launch InfluxDB and create a database named syslog
+
+Open Grafana and add InfluxDB as a data source
+
+4️⃣ Visualize
+
+Create dashboards to visualize metrics like CPU, Memory, Disk, and MySQL usage
+
+Set thresholds and alerts for proactive monitoring
+
+📈 Sample Dashboard
+
+
+Example panels:
+
+System CPU Usage (%)
+
+Memory Utilization (%)
+
+Disk Consumption (GB)
+
+MySQL Log Activity
+
+🧠 DevOps Relevance
+DevOps Concept	How This Project Demonstrates It
+Continuous Monitoring	Real-time metrics and log visibility
+Automation	Fluentd automates collection and forwarding
+Deployment Integration	Multiple tools configured in production-like WSL environment
+Observability	Grafana dashboards for deep performance insight
+Scalability	Modular and expandable architecture for multi-source logging
+💡 Skills Demonstrated
+
+🔹 Log Aggregation & Centralized Management
+
+🔹 Time-Series Data Storage
+
+🔹 Data Visualization & Dashboard Creation
+
+🔹 Linux Deployment & Configuration
+
+🔹 Monitoring Automation
+
+🔹 DevOps Toolchain Integration
