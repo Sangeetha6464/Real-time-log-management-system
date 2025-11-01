@@ -57,7 +57,7 @@ v
 ```bash
 gem install --user-install fluentd
 fluentd --setup ./fluent
-2️⃣ Configure Fluentd
+### **2️⃣ Configure Fluentd
 
 Create a file named fluent.conf:
 <source>
@@ -76,20 +76,20 @@ Create a file named fluent.conf:
   port 8086
   database syslog
 </match>
-3️⃣ Start InfluxDB and Grafana
+### **3️⃣ Start InfluxDB and Grafana
 
 Launch InfluxDB and create a database named syslog
 
 Open Grafana and add InfluxDB as a data source
 
-4️⃣ Visualize
+### **4️⃣ Visualize
 
 Create dashboards to visualize metrics like CPU, Memory, Disk, and MySQL usage
 
 Set thresholds and alerts for proactive monitoring
 📈 Sample Dashboard
 
-(You can upload a screenshot here once your Grafana dashboard is ready.)
+In grafana dashboard:
 Example panels:
 
 System CPU Usage (%)
@@ -100,14 +100,14 @@ Disk Consumption (GB)
 
 MySQL Log Activity
 
-🧠 DevOps Relevance
+### **🧠 DevOps Relevance
 DevOps Concept	How This Project Demonstrates It
 Continuous Monitoring	Real-time metrics and log visibility
 Automation	Fluentd automates collection and forwarding
 Deployment Integration	Multiple tools configured in production-like WSL environment
 Observability	Grafana dashboards for deep performance insight
 Scalability	Modular and expandable architecture for multi-source logging
-💡 Skills Demonstrated
+### **💡 Skills Demonstrated
 
 🔹 Log Aggregation & Centralized Management
 
